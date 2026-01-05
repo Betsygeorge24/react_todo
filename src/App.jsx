@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState([]);
+  const inputRef = useRef(null);
+
+useEffect(() => {
+  inputRef.current.focus();
+}, []);
+  
 
   // Add new task
   const addTodo = () => {
@@ -43,6 +49,7 @@ function App() {
 
       <div className="input-box">
         <input
+          ref={inputRef}
           type="text"
           value={task}
           placeholder="Enter a new task"
